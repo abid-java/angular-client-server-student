@@ -1,10 +1,13 @@
 package com.app.samples.springboot.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 // TODO: Auto-generated Javadoc
@@ -39,6 +42,10 @@ public class Address {
 	/** The zip code. */
 	@Column(name = "zip_code")
 	private long zipCode;
+	
+	/** The student. */
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "address")
+	private Student student;
 
 	/**
 	 * Instantiates a new address.

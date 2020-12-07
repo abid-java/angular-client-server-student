@@ -1,16 +1,14 @@
 package com.app.samples.springboot.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 // TODO: Auto-generated Javadoc
@@ -38,10 +36,14 @@ public class Student {
 	@Column(name = "email_id")
 	private String emailId;
 	
-	/** The addresses list. */
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "sa_fid", referencedColumnName = "studentId")
-	List<Address> addressesList = new ArrayList<>();
+	/** The school name. */
+	@Column(name = "school_name")
+	private String schoolName;
+	
+	/** The address. */
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_student_Id")
+	private Address address;
 
 	/**
 	 * Instantiates a new student.
@@ -49,7 +51,7 @@ public class Student {
 	public Student() {
 		super();
 	}
-
+	
 	/**
 	 * Instantiates a new student.
 	 *
@@ -57,15 +59,18 @@ public class Student {
 	 * @param firstName the first name
 	 * @param lastName the last name
 	 * @param emailId the email id
-	 * @param addressesList the addresses list
+	 * @param schoolName the school name
+	 * @param address the address
 	 */
-	public Student(long studentId, String firstName, String lastName, String emailId, List<Address> addressesList) {
+	public Student(long studentId, String firstName, String lastName, String emailId, String schoolName,
+			Address address) {
 		super();
 		this.studentId = studentId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;
-		this.addressesList = addressesList;
+		this.schoolName = schoolName;
+		this.address = address;
 	}
 
 	/**
@@ -141,21 +146,39 @@ public class Student {
 	}
 
 	/**
-	 * Gets the addresses list.
+	 * Gets the address.
 	 *
-	 * @return the addresses list
+	 * @return the address
 	 */
-	public List<Address> getAddressesList() {
-		return addressesList;
+	public Address getAddress() {
+		return address;
 	}
 
 	/**
-	 * Sets the addresses list.
+	 * Sets the address.
 	 *
-	 * @param addressesList the new addresses list
+	 * @param address the new address
 	 */
-	public void setAddressesList(List<Address> addressesList) {
-		this.addressesList = addressesList;
-	}	
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	/**
+	 * Gets the school name.
+	 *
+	 * @return the school name
+	 */
+	public String getSchoolName() {
+		return schoolName;
+	}
+
+	/**
+	 * Sets the school name.
+	 *
+	 * @param schoolName the new school name
+	 */
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
 	
 }
