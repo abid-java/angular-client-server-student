@@ -1,11 +1,14 @@
 package com.app.samples.springboot.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +45,7 @@ public class StudentController {
 	@Autowired
 	private StudentUtil studentUtil;
 	
+	/** The student dao. */
 	@Autowired
 	private StudentDAO studentDao;
 	
@@ -136,6 +140,31 @@ public class StudentController {
 			throw new ResourceNotFoundException("Student Not Found with Id : " + studentId);
 		}
 		return responseEntity;		
+	}
+	
+	/**
+	 * Delete student.
+	 *
+	 * @param studentId the student id
+	 * @return the response entity
+	 * @throws ResourceNotFoundException the resource not found exception
+	 */
+	@DeleteMapping("/{studentId}")
+	public ResponseEntity<Map<String, Boolean>> deleteStudent(@PathVariable("studentId") Long studentId) throws ResourceNotFoundException {
+		String METHOD_NAME = "deleteStudent";
+		logger.info("<<===== executing " + METHOD_NAME + " in " + CLASS_NAME +" =====>>");
+		Map<String, Boolean> response = null;
+		ResponseEntity<Map<String, Boolean>> responseEntity = null;
+		Student studentToDelete = studentUtil.existingStudent(studentId);
+		if(studentToDelete != null) {
+			response = new HashMap<>();
+			studentRepository.delete(studentToDelete);
+			response.put("Deleted", Boolean.TRUE);
+			responseEntity = ResponseEntity.ok().body(response);
+		} else {
+			throw new ResourceNotFoundException("Student Not Found with Id : " + studentId);
+		}
+		return responseEntity;
 	}
 	
 }

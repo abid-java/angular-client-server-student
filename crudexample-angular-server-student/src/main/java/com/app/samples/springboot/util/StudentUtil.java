@@ -6,12 +6,9 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.samples.springboot.controller.StudentController;
-import com.app.samples.springboot.entity.Address;
 import com.app.samples.springboot.entity.Student;
 import com.app.samples.springboot.repository.StudentRepository;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 // TODO: Auto-generated Javadoc
 /**
