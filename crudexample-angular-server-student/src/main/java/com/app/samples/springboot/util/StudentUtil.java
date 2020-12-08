@@ -52,37 +52,6 @@ public class StudentUtil {
 	}
 	
 	/**
-	 * Updated student.
-	 *
-	 * @param existingStudent the existing student
-	 * @param newStudent the new student
-	 * @return the student
-	 */
-	public Student updatedStudent(Student existingStudent, Student newStudent) {
-		String METHOD_NAME = "updatedStudent";
-		logger.info("<<===== executing " + METHOD_NAME + " in " + CLASS_NAME +" =====>>");
-		Address existingAddress = null;
-		Address newAddress = null;
-		if(existingStudent != null && newStudent != null) {
-			existingStudent.setFirstName(newStudent.getFirstName());
-			existingStudent.setLastName(newStudent.getLastName());
-			existingStudent.setEmailId(newStudent.getEmailId());
-			existingStudent.setSchoolName(newStudent.getSchoolName());
-			existingAddress = existingStudent.getAddress();
-			newAddress = newStudent.getAddress();			
-			if(existingAddress != null && newAddress != null) {
-				existingAddress.setCity(newAddress.getCity());
-				existingAddress.setStreet(newAddress.getStreet());
-				existingAddress.setState(newAddress.getState());
-				existingAddress.setCountry(newAddress.getCountry());
-				existingAddress.setZipCode(newAddress.getZipCode());				
-			}
-			existingStudent.setAddress(existingAddress);
-		}
-		return existingStudent;
-	}
-	
-	/**
 	 * Convert object to json.
 	 *
 	 * @param javaObject the java object
