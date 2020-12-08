@@ -50,7 +50,6 @@ public class StudentDAO {
 		String jsonAddress = null;
 		Map<String, Object> inParamMap = null;
 		SqlParameterSource sqlParameterSource = null;
-		@SuppressWarnings("unused")
 		Map<String, Object> simpleJdbcCallResult = null;
 		try {
 			inParamMap = new HashMap<String, Object>();
