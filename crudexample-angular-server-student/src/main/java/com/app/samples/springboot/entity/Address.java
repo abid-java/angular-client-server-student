@@ -182,4 +182,17 @@ public class Address {
 		this.zipCode = zipCode;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
+	@Override
+	public String toString() {
+		return "Address [studentId=" + studentId + ", street=" + street + ", city=" + city + ", state=" + state
+				+ ", country=" + country + ", zipCode=" + zipCode + ", student=" + student + "]";
+	}
+	
+	
+
 }

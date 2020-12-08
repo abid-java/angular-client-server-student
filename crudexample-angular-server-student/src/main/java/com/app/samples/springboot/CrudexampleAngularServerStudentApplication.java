@@ -1,6 +1,7 @@
 package com.app.samples.springboot;
 
 import java.util.Collections;
+import java.util.logging.Logger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +22,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 public class CrudexampleAngularServerStudentApplication {
+	
+	/** The logger. */
+	private static Logger logger = Logger.getLogger(CrudexampleAngularServerStudentApplication.class.getName());
 
 	/**
 	 * The main method.
@@ -28,6 +32,7 @@ public class CrudexampleAngularServerStudentApplication {
 	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
+		logger.info("<<<<<====================================== Executing Spring Boot Application ======================================>>>>>");
 		SpringApplication.run(CrudexampleAngularServerStudentApplication.class, args);
 	}
 	

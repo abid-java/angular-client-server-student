@@ -20,7 +20,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @PropertySources({@PropertySource("classpath:application.properties")})
 public class DatasourceConfiguration {
 	
-	
 	/** The class name. */
 	private final String CLASS_NAME = "DatasourceConfiguration";
 

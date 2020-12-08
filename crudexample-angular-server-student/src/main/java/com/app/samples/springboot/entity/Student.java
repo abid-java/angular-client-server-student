@@ -50,8 +50,8 @@ public class Student {
 	 */
 	public Student() {
 		super();
-	}
-	
+	}	
+
 	/**
 	 * Instantiates a new student.
 	 *
@@ -62,8 +62,7 @@ public class Student {
 	 * @param schoolName the school name
 	 * @param address the address
 	 */
-	public Student(long studentId, String firstName, String lastName, String emailId, String schoolName,
-			Address address) {
+	public Student(long studentId, String firstName, String lastName, String emailId, String schoolName, Address address) {
 		super();
 		this.studentId = studentId;
 		this.firstName = firstName;
@@ -72,6 +71,8 @@ public class Student {
 		this.schoolName = schoolName;
 		this.address = address;
 	}
+
+
 
 	/**
 	 * Gets the student id.
@@ -180,5 +181,18 @@ public class Student {
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
 	}
+
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
+	@Override
+	public String toString() {
+		return "Student [studentId=" + studentId + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId="
+				+ emailId + ", schoolName=" + schoolName + ", address=" + address + "]";
+	}
 	
+	
+
 }
